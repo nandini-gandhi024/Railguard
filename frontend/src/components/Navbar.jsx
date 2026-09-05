@@ -7,12 +7,14 @@ import {
   CalendarClock, 
   Sliders, 
   Train, 
-  Radio
+  Radio,
+  MapPin
 } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedZone, setSelectedZone }) {
   const tabs = [
     { id: 'dashboard', label: 'Command Dashboard', icon: Activity },
+    { id: 'geo_map', label: 'GeoTrack & Satellite Map', icon: MapPin },
     { id: 'cv_studio', label: 'AI Fault Detector', icon: Eye },
     { id: 'risk_xai', label: 'Risk & XAI Engine', icon: Cpu },
     { id: 'block_planner', label: 'SIH26027 Block Planner', icon: CalendarClock },

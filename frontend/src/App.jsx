@@ -5,6 +5,7 @@ import FaultDetectionStudio from './components/FaultDetectionStudio';
 import RiskXAIModule from './components/RiskXAIModule';
 import BlockPlanningStudio from './components/BlockPlanningStudio';
 import RiskSimulatorLab from './components/RiskSimulatorLab';
+import RailwayMap from './components/RailwayMap';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -128,6 +129,12 @@ export default function App() {
               tracks={tracks.length > 0 ? tracks : fallbackTracks}
               onSelectTrack={handleSelectTrack}
               onNavigate={(tab) => setActiveTab(tab)}
+            />
+          )}
+
+          {activeTab === 'geo_map' && (
+            <RailwayMap
+              onNavigateToSimulator={() => setActiveTab('simulator')}
             />
           )}
 

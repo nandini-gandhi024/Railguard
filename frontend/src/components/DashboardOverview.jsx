@@ -140,9 +140,14 @@ export default function DashboardOverview({ summary, tracks, onSelectTrack, onNa
               Live status across Northern, Central, Western, and Eastern Railway Mainline corridors
             </p>
           </div>
-          <button onClick={() => onNavigate('block_planner')} className="btn-secondary text-xs">
-            Open SIH Block Planner
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => onNavigate('geo_map')} className="btn-primary text-xs py-1.5 px-3">
+              <span>🛰️ Open GIS Map</span>
+            </button>
+            <button onClick={() => onNavigate('block_planner')} className="btn-secondary text-xs py-1.5 px-3">
+              Open SIH Block Planner
+            </button>
+          </div>
         </div>
 
         {/* Section visual track strip */}

@@ -4,3 +4,9 @@ __pycache__/
 *.pyc
 railguard.db
 desktop.ini
+
+# Model weights & AI checkpoints
+*.pt
+*.pth
+*.onnx
+!backend/ai/weights/.gitkeep

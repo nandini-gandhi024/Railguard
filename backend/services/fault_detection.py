@@ -1,32 +1,29 @@
-import random
-from typing import Optional
+from typing import Optional, Dict, Any
 
-def detect_fault(image_bytes: Optional[bytes] = None) -> dict:
+try:
+    from ai.yolo_detector import get_detector
+except ImportError:
+    from backend.ai.yolo_detector import get_detector
+
+
+def detect_fault(image_bytes: Optional[bytes] = None) -> Dict[str, Any]:
     """
-    Interface for Member 3's Computer Vision Model.
-    Analyzes track image bytes and returns defect classification, confidence, and severity.
+    Interface for Member 3's Computer Vision Fault Detection Model.
+    Routes image bytes to the YOLO detector engine in backend/ai/yolo_detector.py.
     
-    Expected contract:
+    If trained YOLO weights (.pt) are present in backend/ai/weights/, runs live model inference.
+    If weights are not yet present, gracefully falls back to domain heuristic analysis.
+    
+    Expected return contract:
     {
       "defect_type": "crack",
       "confidence": 0.94,
-      "severity": 85.0
+      "severity": 85.0,
+      "bounding_box": {"ymin": 35.0, "xmin": 40.0, "ymax": 65.0, "xmax": 65.0},
+      "description": "...",
+      "recommended_action": "..."
     }
     """
-    # MOCK IMPLEMENTATION: Will be replaced by Member 3's real CV model (YOLO/PyTorch)
-    defect_types = ["crack", "head_check", "broken_sleeper", "missing_clip", "ballast_void"]
-    
-    # Return structured defect payload matching Member 3 spec
-    return {
-        "defect_type": "crack",
-        "confidence": 0.94,
-        "severity": 85.0,
-        "bounding_box": {
-            "ymin": 35.0,
-            "xmin": 40.0,
-            "ymax": 65.0,
-            "xmax": 65.0
-        },
-        "description": "Transverse fatigue crack detected in rail head. High risk of rail fracture under heavy axle loading.",
-        "recommended_action": "Immediate inspection & TSR 30 km/h."
-    }
+    detector = get_detector()
+    return detector.detect(image_bytes)
+

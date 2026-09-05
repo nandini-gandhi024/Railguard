@@ -1,0 +1,1122 @@
+[
+  {
+    "section_id": "SEC-NR-101",
+    "route_name": "NDLS-CNB Golden Corridor",
+    "start_station": "New Delhi (NDLS)",
+    "end_station": "Ghaziabad Jn (GZB)",
+    "latitude": 28.6561,
+    "longitude": 77.3366,
+    "start_latitude": 28.6429,
+    "start_longitude": 77.2195,
+    "end_latitude": 28.6692,
+    "end_longitude": 77.4538,
+    "track_length_km": 28.4,
+    "track_type": "Quadruple Broad Gauge (1676mm)",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Gangetic Alluvial Plain",
+    "risk_level": "CRITICAL",
+    "defect_status": "Transverse Fatigue Crack at KM 14.2",
+    "last_inspection_date": "2026-08-28",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 62,
+    "coordinates": [
+      [
+        28.6429,
+        77.2195
+      ],
+      [
+        28.6561,
+        77.3366
+      ],
+      [
+        28.6692,
+        77.4538
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-102",
+    "route_name": "NDLS-CNB Golden Corridor",
+    "start_station": "Ghaziabad Jn (GZB)",
+    "end_station": "Aligarh Jn (ALJN)",
+    "latitude": 28.2833,
+    "longitude": 77.7709,
+    "start_latitude": 28.6692,
+    "start_longitude": 77.4538,
+    "end_latitude": 27.8974,
+    "end_longitude": 78.088,
+    "track_length_km": 106.1,
+    "track_type": "Triple Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Gangetic Alluvial Plain",
+    "risk_level": "LOW",
+    "defect_status": "Operational - No Defect",
+    "last_inspection_date": "2026-09-01",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 48,
+    "coordinates": [
+      [
+        28.6692,
+        77.4538
+      ],
+      [
+        28.2833,
+        77.7709
+      ],
+      [
+        27.8974,
+        78.088
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-103",
+    "route_name": "NDLS-CNB Golden Corridor",
+    "start_station": "Aligarh Jn (ALJN)",
+    "end_station": "Tundla Jn (TDL)",
+    "latitude": 27.5529,
+    "longitude": 78.1658,
+    "start_latitude": 27.8974,
+    "start_longitude": 78.088,
+    "end_latitude": 27.2084,
+    "end_longitude": 78.2435,
+    "track_length_km": 78.5,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Semi-Arid Alluvium",
+    "risk_level": "HIGH",
+    "defect_status": "Ballast Scour and Sleeper Spalling",
+    "last_inspection_date": "2026-08-20",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 58,
+    "coordinates": [
+      [
+        27.8974,
+        78.088
+      ],
+      [
+        27.5529,
+        78.1658
+      ],
+      [
+        27.2084,
+        78.2435
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-104",
+    "route_name": "NDLS-CNB Golden Corridor",
+    "start_station": "Tundla Jn (TDL)",
+    "end_station": "Etawah Jn (ETW)",
+    "latitude": 26.9927,
+    "longitude": 78.6352,
+    "start_latitude": 27.2084,
+    "start_longitude": 78.2435,
+    "end_latitude": 26.7769,
+    "end_longitude": 79.027,
+    "track_length_km": 92.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Ravine & Alluvial Border",
+    "risk_level": "MEDIUM",
+    "defect_status": "Fastener Dislocation (Missing Clips)",
+    "last_inspection_date": "2026-08-25",
+    "speed_limit_kmh": 120,
+    "traffic_gmt_per_day": 54,
+    "coordinates": [
+      [
+        27.2084,
+        78.2435
+      ],
+      [
+        26.9927,
+        78.6352
+      ],
+      [
+        26.7769,
+        79.027
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-105",
+    "route_name": "NDLS-CNB Golden Corridor",
+    "start_station": "Etawah Jn (ETW)",
+    "end_station": "Kanpur Central (CNB)",
+    "latitude": 26.6154,
+    "longitude": 79.6891,
+    "start_latitude": 26.7769,
+    "start_longitude": 79.027,
+    "end_latitude": 26.4539,
+    "end_longitude": 80.3512,
+    "track_length_km": 139.2,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Gangetic Alluvial Basin",
+    "risk_level": "CRITICAL",
+    "defect_status": "Severe Rail Corrugation & Head Check",
+    "last_inspection_date": "2026-08-18",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 66,
+    "coordinates": [
+      [
+        26.7769,
+        79.027
+      ],
+      [
+        26.6154,
+        79.6891
+      ],
+      [
+        26.4539,
+        80.3512
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-106",
+    "route_name": "NDLS-KLK Northern Trunk",
+    "start_station": "Subzi Mandi (SZM)",
+    "end_station": "Panipat Jn (PNP)",
+    "latitude": 29.0288,
+    "longitude": 77.0809,
+    "start_latitude": 28.6667,
+    "start_longitude": 77.1983,
+    "end_latitude": 29.3909,
+    "end_longitude": 76.9635,
+    "track_length_km": 89.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Fertile Plains",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Normal",
+    "last_inspection_date": "2026-08-30",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 40,
+    "coordinates": [
+      [
+        28.6667,
+        77.1983
+      ],
+      [
+        29.0288,
+        77.0809
+      ],
+      [
+        29.3909,
+        76.9635
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-107",
+    "route_name": "NDLS-KLK Northern Trunk",
+    "start_station": "Panipat Jn (PNP)",
+    "end_station": "Ambala Cantt (UMB)",
+    "latitude": 29.8759,
+    "longitude": 76.8988,
+    "start_latitude": 29.3909,
+    "start_longitude": 76.9635,
+    "end_latitude": 30.3609,
+    "end_longitude": 76.834,
+    "track_length_km": 109.5,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Ghaggar Floodplain",
+    "risk_level": "HIGH",
+    "defect_status": "Bridge Pier Scour at Ghaggar Crossing",
+    "last_inspection_date": "2026-08-22",
+    "speed_limit_kmh": 100,
+    "traffic_gmt_per_day": 48,
+    "coordinates": [
+      [
+        29.3909,
+        76.9635
+      ],
+      [
+        29.8759,
+        76.8988
+      ],
+      [
+        30.3609,
+        76.834
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NR-108",
+    "route_name": "UMB-CDG Express Corridor",
+    "start_station": "Ambala Cantt (UMB)",
+    "end_station": "Chandigarh Jn (CDG)",
+    "latitude": 30.5328,
+    "longitude": 76.8308,
+    "start_latitude": 30.3609,
+    "start_longitude": 76.834,
+    "end_latitude": 30.7046,
+    "end_longitude": 76.8277,
+    "track_length_km": 45.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Shivalik Piedmont Plain",
+    "risk_level": "MEDIUM",
+    "defect_status": "Minor Thermal Gauge Variation",
+    "last_inspection_date": "2026-08-27",
+    "speed_limit_kmh": 120,
+    "traffic_gmt_per_day": 36,
+    "coordinates": [
+      [
+        30.3609,
+        76.834
+      ],
+      [
+        30.5328,
+        76.8308
+      ],
+      [
+        30.7046,
+        76.8277
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-CR-201",
+    "route_name": "CSTM-PUNE Deccan Expressway",
+    "start_station": "Mumbai CSMT (CSMT)",
+    "end_station": "Kalyan Jn (KYN)",
+    "latitude": 19.0919,
+    "longitude": 72.9854,
+    "start_latitude": 18.94,
+    "start_longitude": 72.8353,
+    "end_latitude": 19.2437,
+    "end_longitude": 73.1355,
+    "track_length_km": 53.8,
+    "track_type": "Sextuple Broad Gauge (Suburban + Long Distance)",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Coastal Estuary & Alluvium",
+    "risk_level": "HIGH",
+    "defect_status": "Severe Substructure Water Ingress",
+    "last_inspection_date": "2026-08-24",
+    "speed_limit_kmh": 105,
+    "traffic_gmt_per_day": 85,
+    "coordinates": [
+      [
+        18.94,
+        72.8353
+      ],
+      [
+        19.0919,
+        72.9854
+      ],
+      [
+        19.2437,
+        73.1355
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-CR-202",
+    "route_name": "CSTM-PUNE Deccan Expressway",
+    "start_station": "Kalyan Jn (KYN)",
+    "end_station": "Karjat Jn (KJT)",
+    "latitude": 19.0769,
+    "longitude": 73.2317,
+    "start_latitude": 19.2437,
+    "start_longitude": 73.1355,
+    "end_latitude": 18.91,
+    "end_longitude": 73.3278,
+    "track_length_km": 46.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Ulhas River Valley Plain",
+    "risk_level": "MEDIUM",
+    "defect_status": "Rail Joint Wear & Bolt Slackness",
+    "last_inspection_date": "2026-08-26",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 62,
+    "coordinates": [
+      [
+        19.2437,
+        73.1355
+      ],
+      [
+        19.0769,
+        73.2317
+      ],
+      [
+        18.91,
+        73.3278
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-CR-203",
+    "route_name": "Bhor Ghat Mountain Line",
+    "start_station": "Karjat Jn (KJT)",
+    "end_station": "Lonavala (LNL)",
+    "latitude": 18.8329,
+    "longitude": 73.3684,
+    "start_latitude": 18.91,
+    "start_longitude": 73.3278,
+    "end_latitude": 18.7557,
+    "end_longitude": 73.4091,
+    "track_length_km": 28.5,
+    "track_type": "Triple Mountain Gauge (1 in 37 Gradient)",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Western Ghats Escarpment",
+    "risk_level": "CRITICAL",
+    "defect_status": "Boulder Fall & Embankment Slip Risk",
+    "last_inspection_date": "2026-08-29",
+    "speed_limit_kmh": 60,
+    "traffic_gmt_per_day": 68,
+    "coordinates": [
+      [
+        18.91,
+        73.3278
+      ],
+      [
+        18.8329,
+        73.3684
+      ],
+      [
+        18.7557,
+        73.4091
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-CR-204",
+    "route_name": "CSTM-PUNE Deccan Expressway",
+    "start_station": "Lonavala (LNL)",
+    "end_station": "Shivajinagar (SVJR)",
+    "latitude": 18.6436,
+    "longitude": 73.6268,
+    "start_latitude": 18.7557,
+    "start_longitude": 73.4091,
+    "end_latitude": 18.5314,
+    "end_longitude": 73.8446,
+    "track_length_km": 62.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Deccan Plateau",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Tamp Completed",
+    "last_inspection_date": "2026-09-02",
+    "speed_limit_kmh": 120,
+    "traffic_gmt_per_day": 46,
+    "coordinates": [
+      [
+        18.7557,
+        73.4091
+      ],
+      [
+        18.6436,
+        73.6268
+      ],
+      [
+        18.5314,
+        73.8446
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-WR-301",
+    "route_name": "BCT-ADI Mainline Trunk",
+    "start_station": "Mumbai Central (MMCT)",
+    "end_station": "Virar (VR)",
+    "latitude": 19.2187,
+    "longitude": 72.8124,
+    "start_latitude": 18.9696,
+    "start_longitude": 72.8194,
+    "end_latitude": 19.4678,
+    "end_longitude": 72.8054,
+    "track_length_km": 59.0,
+    "track_type": "Quadruple Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Coastal Mudflat & Saline",
+    "risk_level": "HIGH",
+    "defect_status": "Saline Atmospheric Rail Corrosion",
+    "last_inspection_date": "2026-08-21",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 78,
+    "coordinates": [
+      [
+        18.9696,
+        72.8194
+      ],
+      [
+        19.2187,
+        72.8124
+      ],
+      [
+        19.4678,
+        72.8054
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-WR-302",
+    "route_name": "BCT-ADI Mainline Trunk",
+    "start_station": "Virar (VR)",
+    "end_station": "Dahanu Road (DRD)",
+    "latitude": 19.7206,
+    "longitude": 72.7734,
+    "start_latitude": 19.4678,
+    "start_longitude": 72.8054,
+    "end_latitude": 19.9734,
+    "end_longitude": 72.7414,
+    "track_length_km": 64.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Coastal Lowland",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Clear",
+    "last_inspection_date": "2026-08-31",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 45,
+    "coordinates": [
+      [
+        19.4678,
+        72.8054
+      ],
+      [
+        19.7206,
+        72.7734
+      ],
+      [
+        19.9734,
+        72.7414
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-WR-303",
+    "route_name": "BCT-ADI Mainline Trunk",
+    "start_station": "Dahanu Road (DRD)",
+    "end_station": "Valsad (BL)",
+    "latitude": 20.2917,
+    "longitude": 72.8357,
+    "start_latitude": 19.9734,
+    "start_longitude": 72.7414,
+    "end_latitude": 20.61,
+    "end_longitude": 72.93,
+    "track_length_km": 75.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Alluvial Coastal Strip",
+    "risk_level": "MEDIUM",
+    "defect_status": "Broken Concrete Sleeper at KM 168",
+    "last_inspection_date": "2026-08-23",
+    "speed_limit_kmh": 120,
+    "traffic_gmt_per_day": 52,
+    "coordinates": [
+      [
+        19.9734,
+        72.7414
+      ],
+      [
+        20.2917,
+        72.8357
+      ],
+      [
+        20.61,
+        72.93
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-WR-304",
+    "route_name": "BCT-ADI Mainline Trunk",
+    "start_station": "Valsad (BL)",
+    "end_station": "Surat (ST)",
+    "latitude": 20.9074,
+    "longitude": 72.8853,
+    "start_latitude": 20.61,
+    "start_longitude": 72.93,
+    "end_latitude": 21.2049,
+    "end_longitude": 72.8406,
+    "track_length_km": 68.5,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Industrial Alluvial Belt",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Normal",
+    "last_inspection_date": "2026-09-01",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 58,
+    "coordinates": [
+      [
+        20.61,
+        72.93
+      ],
+      [
+        20.9074,
+        72.8853
+      ],
+      [
+        21.2049,
+        72.8406
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-WR-305",
+    "route_name": "BCT-ADI Mainline Trunk",
+    "start_station": "Surat (ST)",
+    "end_station": "Vadodara Jn (BRC)",
+    "latitude": 21.7578,
+    "longitude": 73.0109,
+    "start_latitude": 21.2049,
+    "start_longitude": 72.8406,
+    "end_latitude": 22.3107,
+    "end_longitude": 73.1812,
+    "track_length_km": 129.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Black Cotton Soil Basin",
+    "risk_level": "CRITICAL",
+    "defect_status": "Trackbed Subsidence & Subgrade Heave",
+    "last_inspection_date": "2026-08-16",
+    "speed_limit_kmh": 100,
+    "traffic_gmt_per_day": 64,
+    "coordinates": [
+      [
+        21.2049,
+        72.8406
+      ],
+      [
+        21.7578,
+        73.0109
+      ],
+      [
+        22.3107,
+        73.1812
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-WR-306",
+    "route_name": "BCT-ADI Mainline Trunk",
+    "start_station": "Vadodara Jn (BRC)",
+    "end_station": "Ahmedabad Jn (ADI)",
+    "latitude": 22.6666,
+    "longitude": 72.8763,
+    "start_latitude": 22.3107,
+    "start_longitude": 73.1812,
+    "end_latitude": 23.0225,
+    "end_longitude": 72.5714,
+    "track_length_km": 99.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Alluvial Gujarat Plains",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Clear",
+    "last_inspection_date": "2026-08-28",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 52,
+    "coordinates": [
+      [
+        22.3107,
+        73.1812
+      ],
+      [
+        22.6666,
+        72.8763
+      ],
+      [
+        23.0225,
+        72.5714
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-ER-401",
+    "route_name": "HWH-NDLS Grand Chord",
+    "start_station": "Howrah Jn (HWH)",
+    "end_station": "Barddhaman Jn (BWN)",
+    "latitude": 22.9081,
+    "longitude": 88.1021,
+    "start_latitude": 22.5839,
+    "start_longitude": 88.3426,
+    "end_latitude": 23.2324,
+    "end_longitude": 87.8615,
+    "track_length_km": 95.0,
+    "track_type": "Triple Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Lower Gangetic Delta Plain",
+    "risk_level": "HIGH",
+    "defect_status": "Severe Subgrade Water Saturation",
+    "last_inspection_date": "2026-08-19",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 74,
+    "coordinates": [
+      [
+        22.5839,
+        88.3426
+      ],
+      [
+        22.9081,
+        88.1021
+      ],
+      [
+        23.2324,
+        87.8615
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-ER-402",
+    "route_name": "HWH-NDLS Grand Chord",
+    "start_station": "Barddhaman Jn (BWN)",
+    "end_station": "Asansol Jn (ASN)",
+    "latitude": 23.4607,
+    "longitude": 87.4138,
+    "start_latitude": 23.2324,
+    "start_longitude": 87.8615,
+    "end_latitude": 23.6889,
+    "end_longitude": 86.9661,
+    "track_length_km": 106.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Chota Nagpur Undulating Plateau",
+    "risk_level": "MEDIUM",
+    "defect_status": "Heavy Axle Wheel-Burn & Spalling",
+    "last_inspection_date": "2026-08-25",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 82,
+    "coordinates": [
+      [
+        23.2324,
+        87.8615
+      ],
+      [
+        23.4607,
+        87.4138
+      ],
+      [
+        23.6889,
+        86.9661
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-ER-403",
+    "route_name": "HWH-NDLS Grand Chord",
+    "start_station": "Asansol Jn (ASN)",
+    "end_station": "Dhanbad Jn (DHN)",
+    "latitude": 23.7423,
+    "longitude": 86.6983,
+    "start_latitude": 23.6889,
+    "start_longitude": 86.9661,
+    "end_latitude": 23.7957,
+    "end_longitude": 86.4304,
+    "track_length_km": 58.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Mining Coalfield Plateau",
+    "risk_level": "CRITICAL",
+    "defect_status": "Subterranean Mine Fire Embankment Instability",
+    "last_inspection_date": "2026-08-14",
+    "speed_limit_kmh": 75,
+    "traffic_gmt_per_day": 90,
+    "coordinates": [
+      [
+        23.6889,
+        86.9661
+      ],
+      [
+        23.7423,
+        86.6983
+      ],
+      [
+        23.7957,
+        86.4304
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-SCR-501",
+    "route_name": "SC-BZA High Density Trunk",
+    "start_station": "Secunderabad Jn (SC)",
+    "end_station": "Kazipet Jn (KZJ)",
+    "latitude": 17.7092,
+    "longitude": 79.0118,
+    "start_latitude": 17.4399,
+    "start_longitude": 78.5017,
+    "end_latitude": 17.9784,
+    "end_longitude": 79.5218,
+    "track_length_km": 132.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Telangana Granitic Plateau",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Normal",
+    "last_inspection_date": "2026-09-02",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 50,
+    "coordinates": [
+      [
+        17.4399,
+        78.5017
+      ],
+      [
+        17.7092,
+        79.0118
+      ],
+      [
+        17.9784,
+        79.5218
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-SCR-502",
+    "route_name": "SC-BZA High Density Trunk",
+    "start_station": "Kazipet Jn (KZJ)",
+    "end_station": "Khammam (KMT)",
+    "latitude": 17.6129,
+    "longitude": 79.8366,
+    "start_latitude": 17.9784,
+    "start_longitude": 79.5218,
+    "end_latitude": 17.2473,
+    "end_longitude": 80.1514,
+    "track_length_km": 118.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Rolling Hills & Plain",
+    "risk_level": "MEDIUM",
+    "defect_status": "Worn Frog Point at Mahbubabad Crossover",
+    "last_inspection_date": "2026-08-26",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 56,
+    "coordinates": [
+      [
+        17.9784,
+        79.5218
+      ],
+      [
+        17.6129,
+        79.8366
+      ],
+      [
+        17.2473,
+        80.1514
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-SCR-503",
+    "route_name": "SC-BZA High Density Trunk",
+    "start_station": "Khammam (KMT)",
+    "end_station": "Vijayawada Jn (BZA)",
+    "latitude": 16.883,
+    "longitude": 80.3857,
+    "start_latitude": 17.2473,
+    "start_longitude": 80.1514,
+    "end_latitude": 16.5186,
+    "end_longitude": 80.62,
+    "track_length_km": 104.0,
+    "track_type": "Triple Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Krishna River Delta",
+    "risk_level": "CRITICAL",
+    "defect_status": "Krishna Riverbed Scour & Embankment Erosion",
+    "last_inspection_date": "2026-08-17",
+    "speed_limit_kmh": 90,
+    "traffic_gmt_per_day": 76,
+    "coordinates": [
+      [
+        17.2473,
+        80.1514
+      ],
+      [
+        16.883,
+        80.3857
+      ],
+      [
+        16.5186,
+        80.62
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-SR-601",
+    "route_name": "MAS-SBC Mainline Trunk",
+    "start_station": "Chennai Central (MAS)",
+    "end_station": "Arakkonam Jn (AJJ)",
+    "latitude": 13.0808,
+    "longitude": 79.9694,
+    "start_latitude": 13.0827,
+    "start_longitude": 80.2707,
+    "end_latitude": 13.0788,
+    "end_longitude": 79.6681,
+    "track_length_km": 68.0,
+    "track_type": "Quadruple Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Coastal Lowland Basin",
+    "risk_level": "HIGH",
+    "defect_status": "Heavy Ballast Voiding near Cooum Basin",
+    "last_inspection_date": "2026-08-20",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 72,
+    "coordinates": [
+      [
+        13.0827,
+        80.2707
+      ],
+      [
+        13.0808,
+        79.9694
+      ],
+      [
+        13.0788,
+        79.6681
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-SR-602",
+    "route_name": "MAS-SBC Mainline Trunk",
+    "start_station": "Arakkonam Jn (AJJ)",
+    "end_station": "Katpadi Jn (KPD)",
+    "latitude": 13.0243,
+    "longitude": 79.4003,
+    "start_latitude": 13.0788,
+    "start_longitude": 79.6681,
+    "end_latitude": 12.9698,
+    "end_longitude": 79.1325,
+    "track_length_km": 62.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Palar River Basin",
+    "risk_level": "LOW",
+    "defect_status": "Operational - Normal",
+    "last_inspection_date": "2026-09-03",
+    "speed_limit_kmh": 130,
+    "traffic_gmt_per_day": 46,
+    "coordinates": [
+      [
+        13.0788,
+        79.6681
+      ],
+      [
+        13.0243,
+        79.4003
+      ],
+      [
+        12.9698,
+        79.1325
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-SR-603",
+    "route_name": "MAS-SBC Mainline Trunk",
+    "start_station": "Katpadi Jn (KPD)",
+    "end_station": "Jolarpettai Jn (JTJ)",
+    "latitude": 12.7706,
+    "longitude": 78.8579,
+    "start_latitude": 12.9698,
+    "start_longitude": 79.1325,
+    "end_latitude": 12.5714,
+    "end_longitude": 78.5833,
+    "track_length_km": 84.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Javadi Hills Foot Zone",
+    "risk_level": "MEDIUM",
+    "defect_status": "Missing Elastic Rail Clips (KM 184)",
+    "last_inspection_date": "2026-08-27",
+    "speed_limit_kmh": 110,
+    "traffic_gmt_per_day": 54,
+    "coordinates": [
+      [
+        12.9698,
+        79.1325
+      ],
+      [
+        12.7706,
+        78.8579
+      ],
+      [
+        12.5714,
+        78.5833
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-KR-701",
+    "route_name": "Konkan Coastal Spine",
+    "start_station": "Roha (ROHA)",
+    "end_station": "Khed (KHED)",
+    "latitude": 18.0762,
+    "longitude": 73.2511,
+    "start_latitude": 18.4357,
+    "start_longitude": 73.1189,
+    "end_latitude": 17.7167,
+    "end_longitude": 73.3833,
+    "track_length_km": 112.0,
+    "track_type": "Single Broad Gauge (Heavy Axle)",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Rugged Sahyadri Ghat Cuttings",
+    "risk_level": "CRITICAL",
+    "defect_status": "Deep Cutting Boulder Infiltration",
+    "last_inspection_date": "2026-08-28",
+    "speed_limit_kmh": 75,
+    "traffic_gmt_per_day": 38,
+    "coordinates": [
+      [
+        18.4357,
+        73.1189
+      ],
+      [
+        18.0762,
+        73.2511
+      ],
+      [
+        17.7167,
+        73.3833
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-KR-702",
+    "route_name": "Konkan Coastal Spine",
+    "start_station": "Khed (KHED)",
+    "end_station": "Ratnagiri (RN)",
+    "latitude": 17.35,
+    "longitude": 73.3583,
+    "start_latitude": 17.7167,
+    "start_longitude": 73.3833,
+    "end_latitude": 16.9833,
+    "end_longitude": 73.3333,
+    "track_length_km": 94.0,
+    "track_type": "Single Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Lateritic Plateau & Ravines",
+    "risk_level": "HIGH",
+    "defect_status": "Viaduct Bearing Displacement",
+    "last_inspection_date": "2026-08-22",
+    "speed_limit_kmh": 90,
+    "traffic_gmt_per_day": 34,
+    "coordinates": [
+      [
+        17.7167,
+        73.3833
+      ],
+      [
+        17.35,
+        73.3583
+      ],
+      [
+        16.9833,
+        73.3333
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-KR-703",
+    "route_name": "Konkan Coastal Spine",
+    "start_station": "Ratnagiri (RN)",
+    "end_station": "Madgaon Jn (MAO)",
+    "latitude": 16.1285,
+    "longitude": 73.6457,
+    "start_latitude": 16.9833,
+    "start_longitude": 73.3333,
+    "end_latitude": 15.2736,
+    "end_longitude": 73.9581,
+    "track_length_km": 236.0,
+    "track_type": "Single Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Coastal Ghats / Zuari Estuary",
+    "risk_level": "MEDIUM",
+    "defect_status": "Tunnel Water Leakage & Silt Buildup",
+    "last_inspection_date": "2026-08-25",
+    "speed_limit_kmh": 100,
+    "traffic_gmt_per_day": 32,
+    "coordinates": [
+      [
+        16.9833,
+        73.3333
+      ],
+      [
+        16.1285,
+        73.6457
+      ],
+      [
+        15.2736,
+        73.9581
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NFR-801",
+    "route_name": "Chicken's Neck Corridor",
+    "start_station": "New Jalpaiguri (NJP)",
+    "end_station": "New Cooch Behar (NCB)",
+    "latitude": 26.5155,
+    "longitude": 88.9569,
+    "start_latitude": 26.6853,
+    "start_longitude": 88.4419,
+    "end_latitude": 26.3456,
+    "end_longitude": 89.4719,
+    "track_length_km": 124.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Duars Sub-Himalayan Floodplain",
+    "risk_level": "HIGH",
+    "defect_status": "Teesta River High Water Scour Warning",
+    "last_inspection_date": "2026-08-20",
+    "speed_limit_kmh": 100,
+    "traffic_gmt_per_day": 44,
+    "coordinates": [
+      [
+        26.6853,
+        88.4419
+      ],
+      [
+        26.5155,
+        88.9569
+      ],
+      [
+        26.3456,
+        89.4719
+      ]
+    ]
+  },
+  {
+    "section_id": "SEC-NFR-802",
+    "route_name": "Brahmaputra Valley Trunk",
+    "start_station": "New Cooch Behar (NCB)",
+    "end_station": "Guwahati (GHY)",
+    "latitude": 26.2639,
+    "longitude": 90.6113,
+    "start_latitude": 26.3456,
+    "start_longitude": 89.4719,
+    "end_latitude": 26.1822,
+    "end_longitude": 91.7506,
+    "track_length_km": 178.0,
+    "track_type": "Double Broad Gauge",
+    "electrified": "25kV AC 50Hz OHE",
+    "terrain": "Brahmaputra Low Alluvium",
+    "risk_level": "CRITICAL",
+    "defect_status": "Embankment Slump & Ballast Washout",
+    "last_inspection_date": "2026-08-16",
+    "speed_limit_kmh": 80,
+    "traffic_gmt_per_day": 42,
+    "coordinates": [
+      [
+        26.3456,
+        89.4719
+      ],
+      [
+        26.2639,
+        90.6113
+      ],
+      [
+        26.1822,
+        91.7506
+      ]
+    ]
+  }
+]
