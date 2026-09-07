@@ -1,8 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# Database URL for SQLite
-DATABASE_URL = "sqlite:///./railguard.db"
+from pathlib import Path
+
+# Absolute Database URL for SQLite ensuring consistent DB location
+DB_PATH = Path(__file__).resolve().parent.parent / "railguard.db"
+DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 # Create SQLAlchemy engine
 # connect_args={"check_same_thread": False} is required only for SQLite in multi-threaded FastAPI apps

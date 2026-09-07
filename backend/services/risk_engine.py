@@ -1,5 +1,28 @@
-import math
+"""
+RailGuard - Member 4: AI/ML Risk & Prediction Model Integration
+Replaces placeholder logic with the complete trained ML Risk Prediction Engine.
+Fuses Member 3 (Computer Vision Defect), Member 6 (Geospatial & Weather), and Member 1 (Track Parameters).
+"""
+
 from typing import Dict, Any, Optional
+import os
+import sys
+from pathlib import Path
+
+# Ensure backend root is on Python path
+CURRENT_DIR = Path(__file__).resolve().parent
+BACKEND_DIR = CURRENT_DIR.parent
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
+
+try:
+    from ai.risk_prediction import RailGuardRiskEngine
+except ImportError:
+    from backend.ai.risk_prediction import RailGuardRiskEngine
+
+# Initialize singleton Risk Engine
+_ENGINE = RailGuardRiskEngine()
+
 
 def calculate_risk(
     track_data: Dict[str, Any],
@@ -8,78 +31,40 @@ def calculate_risk(
     delay_days: int = 0
 ) -> dict:
     """
-    Interface for Member 4's Risk Prediction AI Model.
-    Integrates defect severity, static track parameters, traffic GMT, and weather stress.
-    
-    Expected contract:
-    {
-      "risk_score": 92,
-      "risk_category": "Critical",
-      "priority": 1,
-      "predicted_risk_7_days": 97
-    }
+    Production interface for Member 4's AI Risk Prediction Engine.
+    Fully backwards-compatible with Member 2 APIs and tests, while adding
+    3-day prediction, Risk Velocity, dynamic XAI explanations, and 30-day wear curves.
     """
-    severity = float(fault_data.get("severity", 85.0))
-    confidence = float(fault_data.get("confidence", 0.94))
-    
-    traffic_gmt = float(track_data.get("traffic_per_day", 45))
-    track_age = int(track_data.get("track_age", 12))
-    
-    temp_c = float(weather_data.get("temperature_c", 38.0)) if weather_data else 38.0
-    monsoon = weather_data.get("monsoon_alert", False) if weather_data else False
-    
-    # Formula combining factors
-    raw_risk = (
-        (0.40 * severity * confidence) +
-        (0.25 * min(100.0, (traffic_gmt / 60.0) * 100.0)) +
-        (0.15 * min(100.0, (temp_c / 45.0) * 100.0 + (25.0 if monsoon else 0.0))) +
-        (0.10 * min(100.0, (track_age / 25.0) * 100.0)) +
-        (0.10 * (delay_days * 3.5))
+    eval_result = _ENGINE.evaluate_track(
+        track_data=track_data,
+        fault_data=fault_data,
+        weather_data=weather_data,
+        delay_days=delay_days
     )
-    
-    risk_score = round(min(100.0, max(0.0, raw_risk)), 1)
-    
-    if risk_score >= 75.0:
-        category = "Critical"
-        priority = 1
-        tsr_speed = 30
-        urgency = "Immediate inspection & TSR 30 km/h"
-    elif risk_score >= 55.0:
-        category = "High"
-        priority = 2
-        tsr_speed = 60
-        urgency = "Schedule maintenance block within 48 hours"
-    elif risk_score >= 35.0:
-        category = "Moderate"
-        priority = 3
-        tsr_speed = 90
-        urgency = "Routine weekly maintenance window"
-    else:
-        category = "Low"
-        priority = 4
-        tsr_speed = int(track_data.get("speed_limit", 130))
-        urgency = "Normal monitoring"
 
-    # Future risk escalation modeling (7-day and 14-day predictions)
-    pred_7 = round(min(100.0, risk_score + 5.0 + (delay_days * 0.5)), 1)
-    pred_14 = round(min(100.0, risk_score + 11.0 + (delay_days * 0.8)), 1)
-    
-    days_to_crit = max(1, int((85.0 - risk_score) / 2.5)) if risk_score < 85.0 else 0
-
+    # Return superset containing all legacy Member 2 keys + all new Member 4 keys
     return {
-        "risk_score": risk_score,
-        "risk_category": category,
-        "priority": priority,
-        "tsr_speed_kmh": tsr_speed,
-        "predicted_risk_7_days": pred_7,
-        "predicted_risk_14_days": pred_14,
-        "days_to_critical": days_to_crit,
-        "urgency_action": urgency,
-        "xai_breakdown": {
-            "Defect Severity": 40.0,
-            "Traffic GMT": 25.0,
-            "Thermal/Monsoon Stress": 15.0,
-            "Track Age": 10.0,
-            "Maintenance Delay": 10.0
-        }
+        # Core Member 2 contract
+        "risk_score": eval_result["risk_score"],
+        "risk_category": eval_result["risk_category"],
+        "priority": eval_result["priority"],
+        "tsr_speed_kmh": eval_result["tsr_speed_kmh"],
+        "predicted_risk_7_days": eval_result["predicted_risk_7_days"],
+        "predicted_risk_14_days": eval_result["predicted_risk_14_days"],
+        "days_to_critical": eval_result["days_to_critical"],
+        "urgency_action": eval_result["urgency_action"],
+        "xai_breakdown": eval_result["xai_breakdown"],
+        
+        # Enhanced Member 4 AI deliverables
+        "predicted_risk_3_days": eval_result["predicted_risk_3_days"],
+        "risk_velocity": eval_result["risk_velocity"],
+        "is_recurring_failure": eval_result["is_recurring_failure"],
+        "recommendation_tier": eval_result["recommendation_tier"],
+        "top_factors": eval_result["top_factors"],
+        "diagnostic_summary": eval_result["diagnostic_summary"],
+        "degradation_curve": eval_result["degradation_curve"],
+        "color_code": eval_result["color_code"],
+        "normal_speed_kmh": eval_result["normal_speed_kmh"],
+        "composite_risk": eval_result["risk_score"],
+        "category": eval_result["risk_category"]
     }
