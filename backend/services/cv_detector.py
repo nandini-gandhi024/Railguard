@@ -52,6 +52,14 @@ DEFECT_CATALOG = {
         "confidence_range": (0.89, 0.96),
         "description": "Lateral track deformation due to excessive thermal expansion stress during high summer temperatures.",
         "action": "Emergency Line Closure / Halt trains. Water cooling spray & stress relief de-stressing required."
+    },
+    "surface_defect": {
+        "name": "Surface Defect",
+        "category": "Surface Wear",
+        "severity_range": (55, 80),
+        "confidence_range": (0.80, 0.95),
+        "description": "Rail surface defect detected (flaking, shelling, spalling, groove, or squat).",
+        "action": "Schedule rail grinding & ultrasonic flaw detection (USFD) within 7 days."
     }
 }
 
@@ -105,7 +113,8 @@ def analyze_rail_image(image_bytes: bytes = None, preset_key: str = None) -> dic
         "broken_sleeper": {"ymin": 50, "xmin": 15, "ymax": 85, "xmax": 85},
         "missing_clip": {"ymin": 40, "xmin": 60, "ymax": 70, "xmax": 85},
         "ballast_void": {"ymin": 60, "xmin": 20, "ymax": 90, "xmax": 80},
-        "track_buckling": {"ymin": 15, "xmin": 10, "ymax": 85, "xmax": 90}
+        "track_buckling": {"ymin": 15, "xmin": 10, "ymax": 85, "xmax": 90},
+        "surface_defect": {"ymin": 25, "xmin": 20, "ymax": 60, "xmax": 80}
     }
     
     bbox = boxes.get(defect_key, {"ymin": 30, "xmin": 30, "ymax": 70, "xmax": 70})

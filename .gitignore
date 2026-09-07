@@ -10,3 +10,11 @@ desktop.ini
 *.pth
 *.onnx
 !backend/ai/weights/.gitkeep
+
+# Railway datasets
+faultrailway_dataset/
+railway_dataset/
+railguard_dataset/
+
+# YOLO training outputs
+runs/

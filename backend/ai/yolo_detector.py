@@ -116,6 +116,11 @@ class YOLODetector:
         # -------------------------------------------------------------
         # Path A: Real Trained YOLO Model Inference
         # -------------------------------------------------------------
+        if not self.is_loaded:
+            candidate_weights = self._find_weights_file()
+            if candidate_weights:
+                self.load_model(candidate_weights)
+
         if self.is_loaded:
             try:
                 # 1. Convert image bytes to PIL Image
@@ -162,7 +167,8 @@ class YOLODetector:
                     )
                     
                     return {
-                        "defect_type": defect_name,
+                        "defect_type": defect_key,
+                        "defect_name": defect_name,
                         "defect_code": defect_key,
                         "confidence": conf_val,
                         "severity": severity,
@@ -203,6 +209,8 @@ class YOLODetector:
         cleaned = name.lower().replace("-", "_").replace(" ", "_")
         if "crack" in cleaned:
             return "crack"
+        if "surface" in cleaned or "defect" in cleaned or "flak" in cleaned or "squat" in cleaned or "shell" in cleaned or "groove" in cleaned or "joint" in cleaned:
+            return "surface_defect"
         if "sleeper" in cleaned:
             return "broken_sleeper"
         if "clip" in cleaned or "erc" in cleaned or "fastener" in cleaned:
