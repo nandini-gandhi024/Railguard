@@ -1,8 +1,11 @@
 .env
+.env.*
+!.env.example
 venv/
 __pycache__/
 *.pyc
 railguard.db
+railguard_analysis.db
 desktop.ini
 
 # Model weights & AI checkpoints
