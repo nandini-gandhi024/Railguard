@@ -33,6 +33,10 @@ assert "warning" in res_t041
 
 # Test 2: Single Isolated Track (No Alternative)
 print("\n2. Testing Single Isolated Track with No Candidate Alternatives...")
+# Clean up prior test track if present
+db.query(Track).filter(Track.track_id == "TRK-ISOLATED-999").delete()
+db.commit()
+
 # Temporarily insert isolated single track in unique section
 isolated_track = Track(
     track_id="TRK-ISOLATED-999",

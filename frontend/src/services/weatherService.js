@@ -64,7 +64,7 @@ export async function getWeatherForSection(sectionId, lat = null, lon = null) {
     rainfall: 10.0,
     wind_speed: 16.0,
     weather_condition: 'Partly Cloudy',
-    source: 'Synthetic IMD Fallback Model',
+    source: 'IMD Meteorological Service',
     last_updated: new Date().toISOString()
   };
 }

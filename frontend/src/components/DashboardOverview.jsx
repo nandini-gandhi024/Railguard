@@ -43,7 +43,7 @@ export default function DashboardOverview({ summary, tracks, onSelectTrack, onNa
             </span>
           </div>
           <p className="text-[11px] text-slate-400 mt-2">
-            SIH26027 Block Optimization boost vs unoptimized schedule (82.5%)
+            RailGuard Block Optimization boost vs unoptimized schedule (82.5%)
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export default function DashboardOverview({ summary, tracks, onSelectTrack, onNa
               <span>🛰️ Open GIS Map</span>
             </button>
             <button onClick={() => onNavigate('block_planner')} className="btn-secondary text-xs py-1.5 px-3">
-              Open SIH Block Planner
+              Open Maintenance Planner
             </button>
           </div>
         </div>

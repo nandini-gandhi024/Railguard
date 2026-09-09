@@ -7,12 +7,17 @@ Provides predict_risk() with calibrated fallback if weights are not yet trained.
 
 from typing import Dict, Any, Optional
 from pathlib import Path
+# pyrefly: ignore [missing-import]
 import numpy as np
 
 try:
+    # pyrefly: ignore [missing-import]
     import joblib
 except ImportError:
-    from sklearn.utils import _joblib as joblib
+    try:
+        from sklearn.utils import _joblib as joblib
+    except ImportError:
+        joblib = None
 
 from .feature_extractor import extract_features, feature_dict_to_vector
 
@@ -30,7 +35,7 @@ class RiskModel:
         self._load_model()
 
     def _load_model(self):
-        if self.model_path.exists():
+        if joblib is not None and self.model_path.exists():
             try:
                 self.model = joblib.load(str(self.model_path))
             except Exception as e:

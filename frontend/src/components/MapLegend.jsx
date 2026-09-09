@@ -5,107 +5,110 @@ export default function MapLegend({ activeRiskFilter, onSelectRiskFilter }) {
   const [collapsed, setCollapsed] = useState(false);
 
   const riskLevels = [
-    { id: 'LOW', label: 'LOW RISK', color: '#10b981', symbol: '🟢', desc: 'Normal Track Condition (Speed 130 km/h)' },
-    { id: 'MEDIUM', label: 'MEDIUM RISK', color: '#eab308', symbol: '🟡', desc: 'Minor Surface Wear / Monitoring (Speed 110 km/h)' },
-    { id: 'HIGH', label: 'HIGH RISK', color: '#f97316', symbol: '🟠', desc: 'Maintenance Window Required within 48h' },
-    { id: 'CRITICAL', label: 'CRITICAL RISK', color: '#ef4444', symbol: '🔴', desc: 'Immediate TSR (30-60 km/h) & Emergency Block' }
+    { id: 'LOW', label: 'Safe / Normal', color: '#137333', desc: 'Line speed 130 km/h' },
+    { id: 'MEDIUM', label: 'Moderate', color: '#1d4ed8', desc: 'Monitoring (110 km/h)' },
+    { id: 'HIGH', label: 'High Risk', color: '#b45309', desc: 'TSR 60-90 km/h' },
+    { id: 'CRITICAL', label: 'Critical', color: '#b91c1c', desc: 'TSR 30 km/h & Emergency Block' }
   ];
 
   const environmentalRisks = [
-    { icon: '💧', label: 'Flood Risk', desc: 'River overflow, bridge scour & track wash' },
-    { icon: '⛰️', label: 'Landslide Risk', desc: 'Rockfall, ghat slope creep & boulder fall' },
-    { icon: '🌊', label: 'Waterlogging', desc: 'Submerged track circuits, yard flooding' },
-    { icon: '🌳', label: 'Vegetation Risk', desc: 'OHE wire infringement & curve sightline block' },
-    { icon: '🌧️', label: 'Extreme Weather', desc: 'Thermal rail buckling (>52°C) or cyclone gales' }
+    { icon: '💧', label: 'Flood / Scour Risk' },
+    { icon: '⛰️', label: 'Landslide Hazard' },
+    { icon: '🌊', label: 'Waterlogging' },
+    { icon: '🌳', label: 'Vegetation' },
+    { icon: '🌧️', label: 'Extreme Weather' }
   ];
 
   return (
-    <div className="glass-card shadow-2xl transition-all duration-300 pointer-events-auto"
+    <div
       style={{
-        background: 'rgba(10, 15, 29, 0.92)',
-        backdropFilter: 'blur(12px)',
-        border: '1px solid rgba(56, 189, 248, 0.25)',
-        borderRadius: '14px',
-        maxWidth: '300px',
-        width: '100%'
+        background: 'rgba(255, 255, 255, 0.96)',
+        backdropFilter: 'blur(6px)',
+        border: '1px solid var(--border-light)',
+        borderRadius: 'var(--radius-md)',
+        boxShadow: 'var(--shadow-md)',
+        maxWidth: '220px',
+        width: '100%',
+        overflow: 'hidden',
+        fontSize: '0.75rem'
       }}
     >
       {/* Legend Header */}
-      <div 
+      <div
         onClick={() => setCollapsed(!collapsed)}
-        className="p-3.5 flex items-center justify-between cursor-pointer border-b border-slate-800/80 hover:bg-slate-800/30 rounded-t-xl transition-colors select-none"
+        style={{
+          padding: '8px 12px',
+          background: 'var(--bg-subtle)',
+          borderBottom: collapsed ? 'none' : '1px solid var(--border-light)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          cursor: 'pointer',
+          userSelect: 'none'
+        }}
       >
-        <div className="flex items-center gap-2">
-          <Layers className="w-4 h-4 text-cyan-400" />
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
-            Railway Safety Legend
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Layers size={14} color="var(--ir-navy-dark)" />
+          <span style={{ fontWeight: 800, fontSize: '0.6875rem', textTransform: 'uppercase', color: 'var(--ir-navy-dark)', letterSpacing: '0.04em' }}>
+            Map Legend
           </span>
         </div>
-        <button className="text-slate-400 hover:text-slate-200 p-0.5">
-          {collapsed ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+        <button style={{ border: 'none', background: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+          {collapsed ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         </button>
       </div>
 
-      {/* Legend Body */}
+      {/* Legend Content */}
       {!collapsed && (
-        <div className="p-3.5 space-y-4 text-xs">
-          {/* Section 1: Track Risk Levels */}
+        <div style={{ padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {/* Track Condition */}
           <div>
-            <div className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-400 mb-2 flex items-center gap-1.5">
-              <ShieldAlert className="w-3.5 h-3.5" />
-              Railway Section Risk Levels
+            <div style={{ fontSize: '0.625rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: 6 }}>
+              Track Condition
             </div>
-            <div className="space-y-1.5">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               {riskLevels.map((lvl) => {
                 const isSelected = activeRiskFilter === lvl.id;
                 return (
-                  <button
+                  <div
                     key={lvl.id}
                     onClick={() => onSelectRiskFilter && onSelectRiskFilter(isSelected ? 'ALL' : lvl.id)}
-                    className={`w-full text-left p-2 rounded-lg transition-all border flex items-center justify-between ${
-                      isSelected
-                        ? 'bg-slate-800/90 border-cyan-400 shadow-sm'
-                        : 'bg-slate-900/50 border-slate-800/60 hover:border-slate-700 hover:bg-slate-800/40'
-                    }`}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '3px 6px',
+                      borderRadius: 4,
+                      background: isSelected ? 'var(--ir-navy-soft)' : 'transparent',
+                      border: isSelected ? '1px solid var(--ir-navy-dark)' : '1px solid transparent',
+                      cursor: 'pointer',
+                      transition: 'all 0.12s'
+                    }}
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: lvl.color }}></span>
-                      <span className="font-bold text-[11px] text-slate-200">{lvl.label}</span>
-                    </div>
-                    <span className="text-[10px] font-mono text-slate-400">
-                      {isSelected ? 'ACTIVE' : lvl.symbol}
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: lvl.color, flexShrink: 0 }} />
+                      <span style={{ fontWeight: isSelected ? 700 : 500, color: 'var(--text-main)' }}>{lvl.label}</span>
                     </span>
-                  </button>
+                    {isSelected && <span style={{ fontSize: '0.625rem', color: 'var(--ir-navy-dark)', fontWeight: 800 }}>✓</span>}
+                  </div>
                 );
               })}
             </div>
           </div>
 
-          {/* Section 2: Environmental Hazard Indicators */}
-          <div className="pt-2 border-t border-slate-800/80">
-            <div className="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-1.5">
-              <AlertTriangle className="w-3.5 h-3.5" />
-              Environmental Hazard Markers
+          {/* Environmental Hazards */}
+          <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 8 }}>
+            <div style={{ fontSize: '0.625rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.04em', marginBottom: 6 }}>
+              Environmental Hazards
             </div>
-            <div className="grid grid-cols-1 gap-1.5">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 3, fontSize: '0.6875rem', color: 'var(--text-secondary)' }}>
               {environmentalRisks.map((env) => (
-                <div 
-                  key={env.label}
-                  className="flex items-center gap-2 p-1.5 rounded-md bg-slate-900/40 border border-slate-800/40 text-[11px]"
-                >
-                  <span className="text-base">{env.icon}</span>
-                  <div className="truncate">
-                    <span className="font-semibold text-slate-300">{env.label}</span>
-                    <span className="text-[10px] text-slate-500 block truncate">{env.desc}</span>
-                  </div>
+                <div key={env.label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span>{env.icon}</span>
+                  <span>{env.label}</span>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Attribution Footer */}
-          <div className="pt-1 text-[9px] text-slate-500 text-center font-mono">
-            OpenStreetMap • Esri Satellite • IMD Weather
           </div>
         </div>
       )}

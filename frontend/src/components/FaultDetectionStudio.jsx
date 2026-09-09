@@ -114,10 +114,10 @@ export default function FaultDetectionStudio({ onAnalyzeComplete, onNavigateToRi
         <div>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
             <Eye className="w-6 h-6 text-cyan-400" />
-            AI Computer Vision Fault Inspector
+            AI Fault Inspector
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Detect rail surface cracks, broken sleepers, missing clips, and structural flaws using automated computer vision.
+            Detect rail surface cracks, broken sleepers, missing clips, and structural flaws using automated visual inspection.
           </p>
         </div>
 
@@ -172,7 +172,7 @@ export default function FaultDetectionStudio({ onAnalyzeComplete, onNavigateToRi
               {loading && (
                 <span className="text-xs text-cyan-400 font-semibold flex items-center gap-2 animate-pulse">
                   <RefreshCw className="w-4 h-4 animate-spin" />
-                  Running Neural Detection Engine...
+                  Running AI Fault Detection...
                 </span>
               )}
             </div>

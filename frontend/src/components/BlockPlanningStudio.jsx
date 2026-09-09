@@ -55,15 +55,15 @@ export default function BlockPlanningStudio() {
 
   return (
     <div className="space-y-6">
-      {/* Studio Header & SIH Banner */}
+      {/* Studio Header & Banner */}
       <div className="glass-card p-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
               <CalendarClock className="w-6 h-6 text-cyan-400" />
-              SIH26027 AI Automatic Block Planning Workbench
+              RailGuard Block Planner
             </h2>
-            <span className="badge badge-low text-[10px]">SIH Problem Statement SIH26027</span>
+            <span className="badge badge-low text-[10px]">Smart Optimizer</span>
           </div>
           <p className="text-xs text-slate-400">
             Automatically schedules track maintenance blocks while maximizing asset availability and eliminating passenger train delays.

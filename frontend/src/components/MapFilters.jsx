@@ -1,22 +1,22 @@
-import React from 'react';
-import { 
-  Filter, 
-  Search, 
-  Layers, 
-  Globe, 
-  Eye, 
-  ShieldAlert, 
-  AlertOctagon, 
-  CheckCircle2, 
+import React, { useState } from 'react';
+import {
+  Search,
+  Layers,
+  Globe,
   RotateCcw,
-  CloudRain,
-  Mountain,
-  Waves,
-  Trees,
-  Flame
+  ShieldAlert,
+  Maximize2,
+  Wrench,
+  CloudSun,
+  MapPin,
+  Flame,
+  Check,
+  Eye,
+  SlidersHorizontal
 } from 'lucide-react';
 
 export default function MapFilters({
+  sections = [],
   riskFilter,
   setRiskFilter,
   envFilter,
@@ -29,73 +29,171 @@ export default function MapFilters({
   setShowEnvMarkers,
   showStations,
   setShowStations,
+  showMaintenance,
+  setShowMaintenance,
+  showRiskLayer,
+  setShowRiskLayer,
+  criticalView,
+  setCriticalView,
+  riskHeatmap,
+  setRiskHeatmap,
+  corridorMode,
+  setCorridorMode,
   stats = { total: 0, critical: 0, high: 0, medium: 0, low: 0 },
-  onResetFilters
+  onResetFilters,
+  onFitAll,
+  onSelectTrack
 }) {
+  const [searchFocused, setSearchFocused] = useState(false);
+
   const riskButtons = [
-    { id: 'ALL', label: 'All Sections', count: stats.total, color: 'border-slate-700 text-slate-200' },
-    { id: 'CRITICAL', label: 'Critical', count: stats.critical, color: 'border-red-500/50 text-red-400 bg-red-950/20' },
-    { id: 'HIGH', label: 'High Risk', count: stats.high, color: 'border-orange-500/50 text-orange-400 bg-orange-950/20' },
-    { id: 'MEDIUM', label: 'Medium', count: stats.medium, color: 'border-yellow-500/50 text-yellow-400 bg-yellow-950/20' },
-    { id: 'LOW', label: 'Low Risk', count: stats.low, color: 'border-emerald-500/50 text-emerald-400 bg-emerald-950/20' }
+    { id: 'ALL', label: 'All', count: stats.total, color: '#0a2540', bg: '#f8fafc' },
+    { id: 'CRITICAL', label: 'Critical', count: stats.critical, color: '#b91c1c', bg: '#fee2e2' },
+    { id: 'HIGH', label: 'High Risk', count: stats.high, color: '#b45309', bg: '#fef3c7' },
+    { id: 'MEDIUM', label: 'Moderate', count: stats.medium, color: '#1d4ed8', bg: '#eff6ff' },
+    { id: 'LOW', label: 'Safe', count: stats.low, color: '#137333', bg: '#e6f4ea' }
   ];
 
-  const envOptions = [
-    { id: 'ALL', label: 'All Hazards' },
-    { id: 'FLOOD', label: '💧 Flood Risk' },
-    { id: 'LANDSLIDE', label: '⛰️ Landslide / Rockfall' },
-    { id: 'WATERLOGGING', label: '🌊 Waterlogging' },
-    { id: 'VEGETATION', label: '🌳 Vegetation Infringement' },
-    { id: 'EXTREME_WEATHER', label: '🌧️ Extreme Weather / Thermal' }
-  ];
+  // Auto-complete search results
+  const searchResults = searchQuery.trim()
+    ? sections.filter((s) => {
+        const q = searchQuery.toLowerCase();
+        return (
+          (s.section_id || '').toLowerCase().includes(q) ||
+          (s.route_name || '').toLowerCase().includes(q) ||
+          (s.start_station || '').toLowerCase().includes(q) ||
+          (s.end_station || '').toLowerCase().includes(q) ||
+          (s.track_id || '').toLowerCase().includes(q)
+        );
+      }).slice(0, 5)
+    : [];
 
   return (
-    <div 
-      className="glass-card p-4 transition-all pointer-events-auto"
+    <div
       style={{
-        background: 'rgba(10, 15, 29, 0.92)',
-        backdropFilter: 'blur(12px)',
-        border: '1px solid rgba(56, 189, 248, 0.25)',
-        borderRadius: '16px'
+        background: '#ffffff',
+        border: '1px solid var(--border-light)',
+        borderRadius: 'var(--radius-md)',
+        padding: '10px 14px',
+        boxShadow: 'var(--shadow-sm)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px'
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        {/* Search Input */}
-        <div className="relative min-w-[220px] flex-1 max-w-sm">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+      {/* Top Row: Search (with dropdown) + Risk Filter Chips + Base Map Switcher + Actions */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', justifyContent: 'space-between' }}>
+        {/* Search Input Container */}
+        <div style={{ position: 'relative', flex: '1 1 220px', minWidth: '200px' }}>
+          <Search
+            size={14}
+            style={{
+              position: 'absolute',
+              left: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: 'var(--text-light)',
+              pointerEvents: 'none'
+            }}
+          />
           <input
             type="text"
-            placeholder="Search section, station, route or terrain..."
+            placeholder="Search track T041, corridor, station..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs text-slate-200 placeholder-slate-500 outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/50 transition-all font-sans"
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
+            className="ir-input"
+            style={{
+              paddingLeft: '32px',
+              width: '100%',
+              height: '32px',
+              fontSize: '0.75rem'
+            }}
           />
-          {searchQuery && (
-            <button 
-              onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 text-xs"
+
+          {/* Instant Search Results Dropdown */}
+          {searchFocused && searchResults.length > 0 && (
+            <div
+              style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                marginTop: 4,
+                background: '#ffffff',
+                border: '1px solid var(--border-med)',
+                borderRadius: 'var(--radius-sm)',
+                boxShadow: 'var(--shadow-lg)',
+                zIndex: 600,
+                overflow: 'hidden'
+              }}
             >
-              ✕
-            </button>
+              {searchResults.map((sec) => (
+                <div
+                  key={sec.section_id}
+                  onClick={() => {
+                    if (onSelectTrack) onSelectTrack(sec);
+                    setSearchQuery('');
+                  }}
+                  style={{
+                    padding: '8px 12px',
+                    borderBottom: '1px solid var(--border-light)',
+                    cursor: 'pointer',
+                    fontSize: '0.75rem',
+                    transition: 'background 0.12s'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = '#ffffff')}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, color: 'var(--ir-navy-dark)' }}>
+                    <span>{sec.section_id} • {sec.start_station} → {sec.end_station}</span>
+                    <span style={{ color: sec.risk_level === 'CRITICAL' ? '#b91c1c' : '#137333', fontSize: '0.6875rem' }}>
+                      {sec.risk_level}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>{sec.route_name}</div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
 
-        {/* Risk Level Pills */}
-        <div className="flex items-center gap-1.5 flex-wrap">
+        {/* Risk Category Filter Pills */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
           {riskButtons.map((btn) => {
-            const isActive = riskFilter === btn.id;
+            const active = riskFilter === btn.id;
             return (
               <button
                 key={btn.id}
                 onClick={() => setRiskFilter(btn.id)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all flex items-center gap-1.5 ${
-                  isActive
-                    ? 'bg-cyan-500/20 border-cyan-400 text-white shadow-md shadow-cyan-500/10 font-bold'
-                    : `${btn.color} hover:bg-slate-800/60`
-                }`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '3px 9px',
+                  borderRadius: 9999,
+                  fontSize: '0.6875rem',
+                  fontWeight: 700,
+                  border: '1px solid',
+                  borderColor: active ? 'var(--ir-navy-dark)' : 'var(--border-light)',
+                  background: active ? 'var(--ir-navy-dark)' : btn.bg,
+                  color: active ? '#ffffff' : btn.color,
+                  cursor: 'pointer',
+                  transition: 'all 0.12s ease'
+                }}
               >
                 <span>{btn.label}</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-800/80 font-mono text-slate-300">
+                <span
+                  style={{
+                    fontSize: '0.625rem',
+                    fontFamily: 'var(--font-mono)',
+                    padding: '1px 5px',
+                    borderRadius: 9999,
+                    background: active ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.06)',
+                    color: active ? '#ffffff' : 'inherit'
+                  }}
+                >
                   {btn.count}
                 </span>
               </button>
@@ -103,91 +201,193 @@ export default function MapFilters({
           })}
         </div>
 
-        {/* Environmental Hazard Dropdown */}
-        <div className="flex items-center gap-2">
-          <label className="text-xs text-slate-400 font-medium whitespace-nowrap flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5 text-cyan-400" /> Hazard:
-          </label>
-          <select
-            value={envFilter}
-            onChange={(e) => setEnvFilter(e.target.value)}
-            className="bg-slate-900/90 border border-slate-700/80 text-xs font-medium text-slate-200 rounded-xl px-3 py-1.5 outline-none focus:border-cyan-400"
-          >
-            {envOptions.map((opt) => (
-              <option key={opt.id} value={opt.id} className="bg-slate-900 text-slate-200">
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Base Layer Switcher (OpenStreetMap vs Satellite) */}
-        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-700/80 text-xs">
+        {/* Base Map Switcher (Standard OSM vs Satellite) */}
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            background: 'var(--bg-subtle)',
+            borderRadius: 6,
+            border: '1px solid var(--border-light)',
+            padding: 2
+          }}
+        >
           <button
             onClick={() => setBaseLayer('osm')}
-            className={`px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1 transition-all ${
-              baseLayer === 'osm'
-                ? 'bg-cyan-glow text-slate-950 font-bold shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
-            title="OpenStreetMap Standard Vector Tiles"
+            style={{
+              padding: '3px 8px',
+              borderRadius: 4,
+              fontSize: '0.6875rem',
+              fontWeight: 700,
+              border: 'none',
+              cursor: 'pointer',
+              background: baseLayer === 'osm' ? 'var(--ir-navy-dark)' : 'transparent',
+              color: baseLayer === 'osm' ? '#ffffff' : 'var(--text-secondary)',
+              transition: 'all 0.12s'
+            }}
           >
-            <Layers className="w-3.5 h-3.5" />
-            <span>Street</span>
+            Standard
           </button>
-
           <button
             onClick={() => setBaseLayer('satellite')}
-            className={`px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1 transition-all ${
-              baseLayer === 'satellite'
-                ? 'bg-cyan-glow text-slate-950 font-bold shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
-            title="High-Resolution Satellite Imagery Layer"
+            style={{
+              padding: '3px 8px',
+              borderRadius: 4,
+              fontSize: '0.6875rem',
+              fontWeight: 700,
+              border: 'none',
+              cursor: 'pointer',
+              background: baseLayer === 'satellite' ? 'var(--ir-navy-dark)' : 'transparent',
+              color: baseLayer === 'satellite' ? '#ffffff' : 'var(--text-secondary)',
+              transition: 'all 0.12s'
+            }}
           >
-            <Globe className="w-3.5 h-3.5" />
-            <span>Satellite</span>
+            Satellite
           </button>
         </div>
 
-        {/* Toggles & Reset */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setShowEnvMarkers(!showEnvMarkers)}
-            className={`px-2.5 py-1.5 rounded-xl text-xs font-medium border flex items-center gap-1.5 transition-all ${
-              showEnvMarkers
-                ? 'bg-amber-500/20 border-amber-400 text-amber-300'
-                : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
-            }`}
-            title="Toggle Environmental Hazard Markers on Map"
-          >
-            <span>⚠️</span>
-            <span>Hazards</span>
-          </button>
+        {/* Actions: Fit All & Reset */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          {onFitAll && (
+            <button
+              onClick={onFitAll}
+              className="btn-ir-secondary"
+              style={{
+                height: '32px',
+                padding: '0 9px',
+                fontSize: '0.6875rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4
+              }}
+              title="Fit all Indian Railway corridors in view"
+            >
+              <Maximize2 size={12} />
+              <span>Fit All Corridors</span>
+            </button>
+          )}
 
-          <button
-            onClick={() => setShowStations(!showStations)}
-            className={`px-2.5 py-1.5 rounded-xl text-xs font-medium border flex items-center gap-1.5 transition-all ${
-              showStations
-                ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300'
-                : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
-            }`}
-            title="Toggle Terminus Station Markers"
-          >
-            <span>🚉</span>
-            <span>Stations</span>
-          </button>
-
-          {(riskFilter !== 'ALL' || envFilter !== 'ALL' || searchQuery) && (
+          {onResetFilters && (
             <button
               onClick={onResetFilters}
-              className="p-1.5 rounded-xl bg-slate-800/60 text-slate-400 hover:text-slate-200 border border-slate-700/60"
-              title="Reset all filters"
+              className="btn-ir-secondary"
+              style={{
+                height: '32px',
+                padding: '0 8px',
+                fontSize: '0.6875rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4
+              }}
+              title="Reset view and filters"
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw size={12} />
             </button>
           )}
         </div>
+      </div>
+
+      {/* Bottom Row: Mode & Layer Toggles */}
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap: '14px',
+          borderTop: '1px solid var(--border-light)',
+          paddingTop: '6px',
+          fontSize: '0.6875rem',
+          color: 'var(--text-secondary)',
+          fontWeight: 600
+        }}
+      >
+        <span style={{ color: 'var(--text-muted)', fontSize: '0.625rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+          Layers & Modes:
+        </span>
+
+        {/* Critical View Toggle (Urgent Mode) */}
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer', color: criticalView ? '#b91c1c' : 'inherit' }}>
+          <input
+            type="checkbox"
+            checked={Boolean(criticalView)}
+            onChange={(e) => setCriticalView && setCriticalView(e.target.checked)}
+            style={{ accentColor: '#b91c1c' }}
+          />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 3, fontWeight: criticalView ? 800 : 600 }}>
+            <ShieldAlert size={12} color={criticalView ? '#b91c1c' : 'inherit'} />
+            <span>Critical View (Urgent)</span>
+          </span>
+        </label>
+
+        {/* Risk Heatmap Toggle */}
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer', color: riskHeatmap ? '#b45309' : 'inherit' }}>
+          <input
+            type="checkbox"
+            checked={Boolean(riskHeatmap)}
+            onChange={(e) => setRiskHeatmap && setRiskHeatmap(e.target.checked)}
+            style={{ accentColor: '#b45309' }}
+          />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 3, fontWeight: riskHeatmap ? 800 : 600 }}>
+            <Flame size={12} color={riskHeatmap ? '#b45309' : 'inherit'} />
+            <span>Risk Heatmap</span>
+          </span>
+        </label>
+
+        {/* Corridor Mode Toggle */}
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={Boolean(corridorMode)}
+            onChange={(e) => setCorridorMode && setCorridorMode(e.target.checked)}
+            style={{ accentColor: 'var(--ir-navy-dark)' }}
+          />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            <SlidersHorizontal size={12} />
+            <span>Corridor Mode</span>
+          </span>
+        </label>
+
+        {/* Maintenance Blocks */}
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={showMaintenance !== false}
+            onChange={(e) => setShowMaintenance && setShowMaintenance(e.target.checked)}
+            style={{ accentColor: 'var(--ir-navy-dark)' }}
+          />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            <span>🔧</span>
+            <span>Maintenance Blocks</span>
+          </span>
+        </label>
+
+        {/* Stations */}
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={showStations}
+            onChange={(e) => setShowStations(e.target.checked)}
+            style={{ accentColor: 'var(--ir-navy-dark)' }}
+          />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            <span>🚉</span>
+            <span>Stations</span>
+          </span>
+        </label>
+
+        {/* Environmental Hazards */}
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={showEnvMarkers}
+            onChange={(e) => setShowEnvMarkers(e.target.checked)}
+            style={{ accentColor: 'var(--ir-navy-dark)' }}
+          />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            <span>⚠️</span>
+            <span>Environmental Hazards</span>
+          </span>
+        </label>
       </div>
     </div>
   );
