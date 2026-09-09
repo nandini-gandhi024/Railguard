@@ -119,3 +119,34 @@ class RiskAlert(Base):
     message = Column(String)
     recommended_action = Column(String)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+class Maintenance(Base):
+    """
+    Stores historical maintenance activities performed on railway tracks.
+    """
+    __tablename__ = "maintenance"
+
+    id = Column(Integer, primary_key=True, index=True)
+    track_id = Column(String, index=True)
+    maintenance_date = Column(DateTime(timezone=True))
+    maintenance_type = Column(String)
+    maintenance_duration = Column(Float)
+    maintenance_status = Column(String)
+    previous_repairs = Column(Integer)
+    days_since_maintenance = Column(Integer)
+    crew = Column(String)
+
+class Weather(Base):
+    """
+    Stores weather and environmental conditions affecting railway tracks.
+    """
+    __tablename__ = "weather"
+
+    id = Column(Integer, primary_key=True, index=True)
+    track_id = Column(String, index=True)
+    location = Column(String)
+    temperature = Column(Float)
+    humidity = Column(Float)
+    rainfall = Column(Float)
+    flood_risk = Column(String)
+    weather_condition = Column(String)
