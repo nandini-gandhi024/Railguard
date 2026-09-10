@@ -1,4 +1,4 @@
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
 
 
@@ -131,6 +131,7 @@ class OptimizationMetrics(BaseModel):
     asset_availability_gain_pct: float
     total_blocks_scheduled: int
     total_downtime_hours: float
+    total_delay_penalty: Optional[float] = 0.0
 
 
 class OptimizationResponse(BaseModel):
@@ -138,6 +139,8 @@ class OptimizationResponse(BaseModel):
     optimized_blocks: List[MaintenanceBlockSchedule]
     metrics: OptimizationMetrics
     reasoning: str = "Scheduled in 01:00-03:00 window due to lowest train traffic and zero passenger disruption."
+    train_impacts: Optional[List[Dict[str, Any]]] = None
+    stringline_graph: Optional[Dict[str, Any]] = None
 
 
 # ---------- 7. Critical Risk Alerts Schemas (Feature 1) ----------

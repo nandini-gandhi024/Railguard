@@ -303,57 +303,16 @@ export async function simulateCorridorRisk(payload) {
 }
 
 export async function optimizeMaintenance(corridorSection = 'NDLS-CNB Mainline Corridor') {
-  try {
-    const res = await fetch(`${API_BASE}/optimize-maintenance`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ corridor_section: corridorSection })
-    });
-    if (res.ok) return await res.json();
-  } catch (err) {
-    console.warn('[API] /optimize-maintenance failed:', err);
+  const res = await fetch(`${API_BASE}/optimize-maintenance`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...authHeaders() },
+    body: JSON.stringify({ corridor_section: corridorSection })
+  });
+  if (!res.ok) {
+    const errorBody = await res.json().catch(() => ({}));
+    throw new Error(errorBody.detail || `Optimization request failed (HTTP ${res.status})`);
   }
-  return {
-    corridor_section: corridorSection,
-    optimized_blocks: [
-      {
-        block_id: 'BLK-001',
-        track_id: 'T041',
-        location: 'KM 142.5 Delhi-Kanpur Line',
-        block_type: 'Emergency Rail Cut & Weld Replacement',
-        required_duration_hours: 2.0,
-        scheduled_start: '01:00',
-        scheduled_end: '03:00',
-        window_type: 'Night Maintenance Corridor Window (01:00–03:00)',
-        status: 'AI Optimized',
-        priority_score: 92.5,
-        train_delay_penalty: 0.0,
-        crew_assigned: 'Northern Railway Track Gang #7'
-      },
-      {
-        block_id: 'BLK-002',
-        track_id: 'TRK-CR-204',
-        location: 'KM 42.1 Kharghar-Panvel Line',
-        block_type: 'Ballast Deep Screening & Sleeper Renewal',
-        required_duration_hours: 2.5,
-        scheduled_start: '01:30',
-        scheduled_end: '04:00',
-        window_type: 'Night Maintenance Corridor Window (01:30–04:00)',
-        status: 'AI Optimized',
-        priority_score: 84.0,
-        train_delay_penalty: 0.0,
-        crew_assigned: 'Central Railway Gang #12'
-      }
-    ],
-    metrics: {
-      unoptimized_asset_availability_pct: 82.5,
-      optimized_asset_availability_pct: 96.5,
-      asset_availability_gain_pct: 14.0,
-      total_blocks_scheduled: 2,
-      total_downtime_hours: 4.5
-    },
-    reasoning: 'Selected 01:00–03:00 night window: Critical risk (92/100), lowest traffic density, zero passenger disruption.'
-  };
+  return await res.json();
 }
 
 export async function optimizeBudget(totalBudgetInr = 5000000.0) {
